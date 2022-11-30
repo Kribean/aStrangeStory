@@ -1,0 +1,10 @@
+<div class="flex flex-col m-4">
+    <div *ngFor="let parcel of parcels "  class="flex flex-row m-4">
+        <app-parcel-story [parcelStory]="parcel"></app-parcel-story>
+        
+    </div>
+    <div>
+        <app-parcel-story-edit (click)="toggleModal()" ></app-parcel-story-edit>
+    </div>
+</div>
+<app-parcel-story-edit-modal [showModal]="showModal"  [toggleModal]="toggleModal" [parcelStory]="parcels[parcels.length-1]" ></app-parcel-story-edit-modal>

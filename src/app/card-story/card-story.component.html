@@ -1,0 +1,20 @@
+<div (click)="goToStory(story.id)" class="w-[200px] h-[350px] m-[20px] p-[10px] bg-gray-200 rounded-lg cursor-pointer shadow-gray-800 hover:opacity-50">
+    <div>
+        <img src={{story.imageUrl}} alt={{story.imageAlt}}>
+    </div>
+    <div>
+        <h3>{{story.title}} </h3>
+    </div>
+    <div>
+        {{story.language}}
+    </div>
+    <div>
+        {{story.numberOfUser}}
+        {{story.numberOfLike}}
+    </div>
+    <div>
+        <p>
+            {{story.content}}
+        </p>
+    </div>
+</div>

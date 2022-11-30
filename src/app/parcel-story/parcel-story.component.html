@@ -1,0 +1,20 @@
+<div class="md:w-[70%] w-full bg-green-400">
+    <div class="flex flex-row w-full">
+        <h3>Edité par: {{parcelStory.user }}le {{parcelStory.createdDate }}</h3>
+
+            </div>
+    <div class="w-full">
+<p class="first-line:uppercase first-line:tracking-widest
+first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900
+first-letter:mr-3 first-letter:float-left break-all
+"> {{parcelStory.content}}</p>
+    </div>
+    <div class="flex flex-row w-full h-[100px] m-4">
+        <span (click)="onLike()">
+            <fa-icon [ngClass]="boolHeart? 'text-[32px] text-red-400 transition-all ease-in-out origin-center rotate-45' :' text-[16px] text-gray-400 transition-all ease-in-out origin-center rotate-45 ' " [icon]="faHeart"></fa-icon>
+        </span>
+        <span class="origin-center font-semibold ">
+            {{parcelStory.numberOfLike}}
+        </span>
+    </div>
+</div>
