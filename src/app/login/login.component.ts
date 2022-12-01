@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GoogleApiService } from '../google-api.service';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor(private readonly google: GoogleApiService){
+  }
 }

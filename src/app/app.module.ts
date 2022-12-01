@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import {ShareIconsModule} from 'ngx-sharebuttons/icons';
+import {HttpClientModule} from '@angular/common/http';
+import {OAuthModule} from 'angular-oauth2-oidc';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +22,7 @@ import { CardStoryComponent } from './card-story/card-story.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ParcelStoryEditModalComponent } from './parcel-story-edit-modal/parcel-story-edit-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SocialNetworkComponent } from './social-network/social-network.component';
 
 
 @NgModule({
@@ -35,13 +40,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     StoryBoardContainerComponent,
     UsersAndMapBtnComponent,
     CardStoryComponent,
-    ParcelStoryEditModalComponent
+    ParcelStoryEditModalComponent,
+    SocialNetworkComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShareButtonsModule.withConfig(
+      {
+        debug:true
+      }
+    ),
+    ShareIconsModule,
+    HttpClientModule,
+    OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,24 @@
+<div class="bg-gradient-to-r from-cyan-500 to-blue-500">
+    <div>
+        <h3> Merci de nous avoir partager ton hisoire </h3>
+    </div>
+    <div>
+        <p class="break-all">Reste connecté pour savoir la suite! Mais pour qu'il y'ait suite, il nous faut d'autres participants!
+            Partages notre site sur tes réseaux en mettant un petit message pour que tes amis puissent participer:
+        </p>
+    </div>
+    <div class="flex flex-row">
+        <share-buttons [theme]="'default'"
+     [include]="['facebook','twitter','linkedin','messenger','whatsapp','copy','pinterest','reddit','tumblr','mix','viber','vk','telegram','xing','line','sms','email','print']"
+     [exclude]="['pinterest','line','sms','email','print']"
+     [show]="9"
+     [showText]="true"
+     [url]="'https://www.pokemon.com/fr/'"
+     [title]="'test'"
+     [description]="'blabla'"
+     [image]="'https://www.pokepedia.fr/images/thumb/7/76/Pikachu-DEPS.png/250px-Pikachu-DEPS.png'"
+     [tags]="'story'"
+     [autoSetMeta]="false"
+    ></share-buttons>
+    </div>
+</div>

@@ -23,8 +23,8 @@ this.imageAlt='banniere';
 
 }
 
-onGoToStoriesPage(){
-this.router.navigateByUrl('stories')
+onGoToLoginPage(){
+this.router.navigateByUrl('login')
 }
 
 }
