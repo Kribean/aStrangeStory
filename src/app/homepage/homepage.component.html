@@ -1,25 +1,29 @@
-<div class="flex flex-col md:flex-row m-[0px] p-[0px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-    <div class="flex flex-col justify-center text-center">
-<span>
-    <h1 class="text-[72px]">
-        {{ 'a stange story' | titlecase }}
-     </h1>
-</span>
+<app-header></app-header>
+    <div class="flex flex-col md:flex-row m-[0px] p-[0px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <div class="flex flex-col justify-center text-center">
+    <span>
+        <h1 class="text-[72px]">
+            {{ 'a stange story' | titlecase }}
+         </h1>
+    </span>
+        </div>
+        <div class="flex flex-col justify-center text-center">
+            <img src="{{imageSrc}}" alt="{{imageAlt}}" />
+        </div>
+    
+        <span class="firefly" *ngFor="let dummyId of dummiesIds"></span>
     </div>
-    <div class="flex flex-col justify-center text-center">
-        <img src="{{imageSrc}}" alt="{{imageAlt}}" />
+    <div class="container mx-auto">
+        <h2> Règles</h2>
+        <p>
+            Basée sur blablabla, le but du jeu est de blablabla
+        </p>
+    
+    </div>
+    <div class="container mx-auto mt-[20px]">
+        <h2>Let's Play!</h2>
+        <p> Une fois que tu ...</p>
+        <button class="w-[200px] h-[50px] text-[32px] bold bg-green-400 rounded hover:bg-green-500 transition-all" (click)="onGoToLoginPage()"> Bibliothèque</button>
+        
     </div>
 
-</div>
-<div class="container mx-auto">
-    <h2> Règles</h2>
-    <p>
-        Basée sur blablabla, le but du jeu est de blablabla
-    </p>
-
-</div>
-<div class="container mx-auto mt-[20px]">
-    <h2>Let's Play!</h2>
-    <p> Une fois que tu ...</p>
-    <button class="w-[200px] h-[50px] text-[32px] bold bg-green-400 rounded hover:bg-green-500 transition-all" (click)="onGoToLoginPage()"> Jouer</button>
-</div>

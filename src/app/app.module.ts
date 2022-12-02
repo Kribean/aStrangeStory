@@ -23,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ParcelStoryEditModalComponent } from './parcel-story-edit-modal/parcel-story-edit-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SocialNetworkComponent } from './social-network/social-network.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SocialNetworkComponent } from './social-network/social-network.componen
     UsersAndMapBtnComponent,
     CardStoryComponent,
     ParcelStoryEditModalComponent,
-    SocialNetworkComponent
+    SocialNetworkComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

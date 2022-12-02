@@ -2,9 +2,18 @@ p{
     font-family: 'Comic Neue', cursive;
 }
 
-.bla{
-    min-width: 18px !important;
-    max-width: 18px!important;
-    min-height: 18px!important;
-    max-width: 18px!important;
+
+.book::after {
+    content: '📖';
+    --emoji: '📘';
+    animation-name: twoFrames;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes twoFrames {
+    50% {
+        content: var(--emoji);
+    }
 }

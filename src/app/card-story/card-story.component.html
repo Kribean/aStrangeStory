@@ -1,16 +1,18 @@
-<div (click)="goToStory(story.id)" class="w-[200px] h-[350px] m-[20px] p-[10px] bg-gray-200 rounded-lg cursor-pointer shadow-gray-800 hover:opacity-50">
-    <div>
+<div (click)="goToStory(story.id)" class="m-4 text-white w-[200px] h-[350px] m-[0px] p-[10px] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-lg cursor-pointer shadow-gray-800 hover:opacity-50 focus:bg-yellow-400 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-[90%]">
+    <div >
         <img src={{story.imageUrl}} alt={{story.imageAlt}}>
     </div>
-    <div>
-        <h3>{{story.title}} </h3>
+    <div class="text-center ">
+        <h3 class="bold">{{story.title | titlecase}} </h3>
     </div>
     <div>
-        {{story.language}}
+        <p>Langue: {{story.language | titlecase}}</p>
     </div>
     <div>
-        {{story.numberOfUser}}
-        {{story.numberOfLike}}
+        <p>Nombre d'auteurs: {{10+ story.numberOfUser}}</p>
+        <span class="text-[16px]">
+            <fa-icon class="text-red-400" [icon]="faHeart"></fa-icon>
+            {{story.numberOfLike}}</span>
     </div>
     <div>
         <p>

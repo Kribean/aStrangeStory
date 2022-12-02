@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OAuthService,AuthConfig} from 'angular-oauth2-oidc'
+import { User } from './models/user.model';
+import { Subject } from 'rxjs';
 
 const oAuthConfig:AuthConfig = {
   issuer:'https://accounts.google.com',
@@ -14,22 +16,36 @@ const oAuthConfig:AuthConfig = {
 })
 export class GoogleApiService {
 
+userProfileSubject$ = new Subject<User>
+
   constructor(private readonly oAuthService:OAuthService) { 
     oAuthService.configure(oAuthConfig);
+    oAuthService.logoutUrl="http://localhost:4200/";
     oAuthService.loadDiscoveryDocument()
     .then(()=>{
       console.log('boom')
       oAuthService.tryLoginImplicitFlow().then(()=>{
         if(!oAuthService.hasValidAccessToken()){
-          console.log('coucou')
+          console.log('naruto')
           oAuthService.initLoginFlow()
         }else{
-          console.log('coucou0')
+          console.log('sasuke')
           oAuthService.loadUserProfile().then((userProfile)=>{
             console.log(JSON.stringify(userProfile));
+            this.userProfileSubject$.next(userProfile as User)
           })
         }
       })
     })
+  }
+
+  isLoggedIn(): boolean{
+    return this.oAuthService.hasValidAccessToken()
+  }
+
+  signOut():void{
+    
+    this.oAuthService.logOut();
+
   }
 }

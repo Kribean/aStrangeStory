@@ -10,7 +10,7 @@ export class GoogleSigninService {
   //private subject!:any
  
 
-  constructor() { 
+  constructor() { }
    /* this.subject=new ReplaySubject<gapi.auth2.GoogleUser>(1)
     gapi.load('auth2',()=>{
       this.auth2=gapi.auth2.init({
