@@ -39,13 +39,21 @@ userProfileSubject$ = new Subject<User>
     })
   }
 
+
   isLoggedIn(): boolean{
+    if(this.oAuthService.hasValidAccessToken())
+    {
+      localStorage.setItem('aStrangeStoryStore',JSON.stringify(this.userProfileSubject$))
+    }else{
+      localStorage.removeItem('aStrangeStoryStore')
+    }
     return this.oAuthService.hasValidAccessToken()
   }
 
   signOut():void{
-    
+    localStorage.removeItem('aStrangeStoryStore')
     this.oAuthService.logOut();
+
 
   }
 }

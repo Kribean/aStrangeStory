@@ -2,6 +2,10 @@ import { Component,Input, OnInit,OnChanges, SimpleChanges} from '@angular/core';
 import { Parcel } from '../models/parcel.model';
 import {FormBuilder, FormGroup,Validators } from '@angular/forms';
 import {Observable,map} from 'rxjs'
+import { ActivatedRoute } from '@angular/router';
+import { ParcelService } from '../services/parcel.service';
+import { User } from '../models/user.model';
+import { GoogleApiDisconnectService } from '../google-api-disconnect.service';
 
 
 @Component({
@@ -14,41 +18,53 @@ export class ParcelStoryEditModalComponent implements OnChanges , OnInit {
   @Input() showModal!: boolean;
   @Input() toggleModal!: ()=>void;
   @Input() parcelStory!:Parcel
+  @Input() stepInModal!:Number
+  @Input() userInformation!:User;
+
   contentStory!:string;
 
   parcelForm!:FormGroup;
   parcelStoryPreview$!:Observable<Parcel>;
+  parcelStoryPreview!:Parcel;
+ 
 
-  constructor(private formBuilder:FormBuilder){}
+  constructor(private readonly google: GoogleApiDisconnectService,private formBuilder:FormBuilder,private route:ActivatedRoute,private parcelService:ParcelService){}
 
   ngOnInit(): void {
     this.showModal=false;
     this.parcelForm = this.formBuilder.group({
-      content: [null,[Validators.required]],
+      content_parcel: [null,[Validators.required]],
   }, {
     updateOn: 'blur'
 })
-  this.parcelStoryPreview$=this.parcelForm.valueChanges.pipe(
+  
+this.parcelStoryPreview$=this.parcelForm.valueChanges.pipe(
     map(parcelVar=>({
       ...parcelVar,
-      id: 0,
-      idStory:1,
-      user:'Jhon Doe',
-      idUser:0,
-      createdDate: new Date(),
-      like:false,
-      numberOfLike:0
-    }))
+      email : this.userInformation?.email,
+      pseudo: this.userInformation?.name,
+      user_img_url: this.userInformation?.picture
+    }))  
   )
+  this.parcelStoryPreview$.subscribe((value)=>{this.parcelStoryPreview=value})
+
   }
   ngOnChanges(changes: SimpleChanges) {
     this.showModal=true
   }
 
   onSubmitForm() {
+    this.stepInModal=2;
+    console.log(this.parcelStoryPreview,'presque',this.route.snapshot.params['idStory']);
+    this.parcelService.postParcel(this.route.snapshot.params['idStory'],this.parcelStoryPreview)
+    console.log('I m at step:',this.stepInModal);
     console.log(this.parcelForm.value);
 }
 
+ngOnDestroy(){
+  this.stepInModal=0;
+  console.log('I m at step:',this.stepInModal);
+}
 
 
 

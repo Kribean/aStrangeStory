@@ -1,5 +1,9 @@
 import { Component,OnInit } from '@angular/core';
 import { Parcel } from '../models/parcel.model';
+import {Observable,map} from 'rxjs'
+import { ParcelService } from '../services/parcel.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-story-board-container',
@@ -8,9 +12,31 @@ import { Parcel } from '../models/parcel.model';
 })
 export class StoryBoardContainerComponent implements OnInit {
 parcels!:Parcel[];
+//parcels!:Parcel[];
+parcelsLast!:Parcel;
 showModal!:boolean;
+stepInModal!:Number;
+userInformation!:User;
+
+constructor(private parcelService:ParcelService,private route:ActivatedRoute ){}
   ngOnInit(): void {
-    this.parcels=[
+    const storedUser = localStorage.getItem('aStrangeStoryStore');
+    if(typeof storedUser ==='string')
+    {
+      this.userInformation=JSON.parse(storedUser).info;
+      console.log(this.userInformation,'pooj');
+    }
+    else{
+      console.log('need to log');
+    }
+    this.stepInModal=0;
+    this.parcelService.getAllParcels(this.route.snapshot.params['idStory']).subscribe(
+      (data:Parcel[])=>{
+        this.parcels=data;
+        this.parcelsLast=data[data.length-1]
+      }
+    );
+    /*this.parcels=[
       {
         id: 1,
         idStory:1,
@@ -40,14 +66,14 @@ showModal!:boolean;
         like:false,
         numberOfLike:4
       },
-    ];
-    //this.showModal = false;
+    ];*/
+    this.showModal = true;
   }
 
   
   toggleModal():void{
-    console.log('toioioi',this.showModal);
     this.showModal = !this.showModal;
-    console.log('youyou',this.showModal)
+    this.stepInModal=0;
+    console.log('I m at step:',this.stepInModal);
   }
 }

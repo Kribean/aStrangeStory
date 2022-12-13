@@ -33,7 +33,7 @@ export class GoogleApiDisconnectService {
           this.oAuthService.logOut();
         }
       })
-    })
+    }).then(()=>localStorage.removeItem('aStrangeStoryStore'))
 
   }
 
@@ -49,8 +49,10 @@ export class GoogleApiDisconnectService {
         }else{
           console.log('pas de token')
           this.oAuthService.loadUserProfile().then((userProfile)=>{
+            localStorage.setItem('aStrangeStoryStore',JSON.stringify(userProfile))
             console.log(JSON.stringify(userProfile));
-            this.userProfileSubject$.next(userProfile as User)
+            this.userProfileSubject$.next(userProfile as User);
+            
           })
         }
       })

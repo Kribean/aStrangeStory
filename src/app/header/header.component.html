@@ -1,7 +1,7 @@
-<nav class="p-4 bg-gray-800 text-gray-200">
+<nav class="p-4 text-gray-200">
     <div class="flex justify-between items-center">
     <div class="flex items-center pl-8">
-      <h1 class="font-[Nabla] tracking-wide font-bold text-xl pl-4">A Strage Story</h1>
+      <span class=" font-[32px] font-[Nabla] tracking-wide font-bold text-xl pl-4">A Strage Story</span>
     </div>
     
     <!-- MOBILE NAV ICON -->
@@ -28,16 +28,13 @@
     </ul>
     </div>
   
-    <div class="hidden lg:flex">
-      <a href="#"><i class="fab fa-facebook text-2xl pr-8 transition duration-300 focus:text-yellow-500 hover:text-yellow-500"></i></a>
-      <a href="#"><i class="fab fa-linkedin text-2xl pr-8 transition duration-300 focus:text-yellow-500 hover:text-yellow-500"></i></a>
-      <a href="#"><i class="fab fa-instagram text-2xl pr-8 transition duration-300 focus:text-yellow-500 hover:text-yellow-500"></i></a>
-      <a href="#"><i class="fab fa-twitter text-2xl pr-8 transition duration-300 focus:text-yellow-500 hover:text-yellow-500"></i></a>
+    <div class="hidden lg:flex lg:flex-row">
+      <a href="#"><fa-icon class="text-[#EAFFD0] text-[32px] " [icon]="faContactBook"></fa-icon></a>
     </div>
     </div>
       
     <!-- MOBILE MENU -->
-  <div id="mobileMenu" [ngClass]="boolBurgerClose? ' flex w-full mx-auto py-8 text-center' : 'hidden'">
+  <div id="mobileMenu" [ngClass]="!boolBurgerClose? ' flex w-full mx-auto py-8 text-center' : 'hidden'">
           <div class="flex flex-col justify-center items-center w-full">
           <a routerLink="stories" class="block text-gray-200 cursor-pointer py-3 transition duration-300 focus:outline-none focus:text-yellow-500 focus:underline hover:underline hover:text-yellow-500" style="text-underline-offset: 8px;">Bibliothèque</a>
           <button *ngIf="boolSignInbtn"  (click)="signOutHeader()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

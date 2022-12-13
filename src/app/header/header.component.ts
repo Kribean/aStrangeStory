@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiDisconnectService } from '../google-api-disconnect.service';
+import { faContactBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   boolSignInbtn!:boolean;
   boolBurgerClose!:boolean;
+
+  faContactBook=faContactBook;
 
   constructor(private readonly google: GoogleApiDisconnectService){}
 

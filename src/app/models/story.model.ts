@@ -1,5 +1,5 @@
 export class Story {
-    id!: number;
+  /*  id!: number;
     title!: string;
     imageUrl!: string;
     imageAlt!:string;
@@ -8,5 +8,12 @@ export class Story {
     content!: string;
     numberOfLike!:number;
     numberOfDislike!:number;
-    numberOfUser!:number;
+    numberOfUser!:number;*/
+    _id!:number;
+    email !: string;
+    pseudo!: string;
+    title_story!: string;
+    createdDate_story !: Date;
+    language_story !: string;
+    description_story!: string
   }
