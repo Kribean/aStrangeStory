@@ -32,42 +32,12 @@ constructor(private parcelService:ParcelService,private route:ActivatedRoute ){}
     this.stepInModal=0;
     this.parcelService.getAllParcels(this.route.snapshot.params['idStory']).subscribe(
       (data:Parcel[])=>{
+        console.log('jesui 5');
         this.parcels=data;
         this.parcelsLast=data[data.length-1]
       }
     );
-    /*this.parcels=[
-      {
-        id: 1,
-        idStory:1,
-        user:'ichi',
-        idUser:'1',
-        createdDate: new Date(),
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        like:true,
-        numberOfLike:5
-      },
-      {
-        id: 2,
-        idStory:1,
-        user:'ni',
-        idUser:'2',
-        createdDate: new Date(),
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        like:false,
-        numberOfLike:4
-      },      {
-        id: 3,
-        idStory:2,
-        user:'san',
-        idUser:'2',
-        createdDate: new Date(),
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        like:false,
-        numberOfLike:4
-      },
-    ];*/
-    this.showModal = true;
+    this.showModal = false;
   }
 
   
@@ -76,4 +46,8 @@ constructor(private parcelService:ParcelService,private route:ActivatedRoute ){}
     this.stepInModal=0;
     console.log('I m at step:',this.stepInModal);
   }
+  EverywhereUpdateListWhenPutEvent(tabParce:Parcel[]){
+    console.log(tabParce,'yyyyyoooo');
+    this.parcels=tabParce;
+;  }
 }

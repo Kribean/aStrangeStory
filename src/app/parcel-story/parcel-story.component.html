@@ -1,20 +1,20 @@
 <div class=" rounded-lg w-full bg-[#FFF9CA] text-[#364F6B] shadow-2xl shadow-dark-500/100">
     <div class="flex flex-row w-full bg-[#FFDEB4]">
-
-        <h3 class="font-bold">Edité par: {{'parcelStory.pseudo' }} le {{'parcelStory.createdDate_parcel | date: dd/MM/yyyy' }}</h3>
+        <img src={{parcelStory.user_img_url}} alt="profil" class="w-[32px] h-[32px]" referrerpolicy="no-referrer"/>
+        <h3 class="font-bold">Edité par: {{parcelStory.pseudo }} le {{parcelStory.createdDate_parcel | date: 'dd/MM/yyyy' }}</h3>
 
             </div>
-    <div class="w-full">
-<p class="first-line:uppercase first-line:tracking-widest
-first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900
-first-letter:mr-3 first-letter:float-left break-all
+    <div class="w-full m-3">
+<p class=" pr-4  first-line:tracking-widest
+first-letter:text-5xl first-letter:font-bold
+first-letter:mr-3 first-letter:float-left content-perso-font break-all
 "> {{parcelStory.content_parcel}}</p>
     </div>
-    <div class="flex flex-row w-full h-[100px] m-4">
-        <span (click)="onLike()">
+    <div class="flex flex-row w-full h-[100px] p-[0px] justify-end my-4 ml-[0px] pr-[20px]">
+        <span class="m-[0px] p-[0px] cursor-pointer" (click)="onLike(parcelStory._id)">
             <fa-icon [ngClass]="boolHeart? 'text-[32px] text-red-400 transition-all ease-in-out origin-center rotate-45' :' text-[16px] text-gray-400 transition-all ease-in-out origin-center rotate-45 ' " [icon]="faHeart"></fa-icon>
         </span>
-        <span class="origin-center font-semibold ">
+        <span [ngClass]="boolHeart?'text-[24px] text-red-400 transition-all ease-in-out font-semibold':'origin-center font-semibold' ">
             {{parcelStory.likes_parcel_count}}
         </span>
     </div>

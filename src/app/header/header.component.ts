@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiDisconnectService } from '../google-api-disconnect.service';
 import { faContactBook } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   faContactBook=faContactBook;
 
-  constructor(private readonly google: GoogleApiDisconnectService){}
+  constructor(private readonly google: GoogleApiDisconnectService, private router:Router){}
 
   signOutHeader(){
     this.google.signOut()
@@ -38,6 +39,10 @@ export class HeaderComponent implements OnInit {
 
   onChangeBoolBurger(){
     this.boolBurgerClose=!this.boolBurgerClose;
+  }
+
+  goToHomepage(){
+    this.router.navigateByUrl('/')
   }
 
 

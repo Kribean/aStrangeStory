@@ -1,16 +1,16 @@
 <nav class="p-4 text-gray-200">
     <div class="flex justify-between items-center">
     <div class="flex items-center pl-8">
-      <span class=" font-[32px] font-[Nabla] tracking-wide font-bold text-xl pl-4">A Strage Story</span>
+      <span (click)="goToHomepage()" class=" cursor-pointer font-[32px] font-[Nabla] tracking-wide font-bold text-xl pl-4">A Strage Story</span>
     </div>
     
     <!-- MOBILE NAV ICON -->
     <div class="lg:hidden block absolute top-4 right-8 fixed">
      
 <div (click)="onChangeBoolBurger()" class="flex flex-col relative">
-    <span [ngClass]="boolBurgerClose? 'absolute top-[17px] w-[24px] h-[2px] mb-[4px] bg-white origin-top-right rotate-45':'w-[24px] h-[2px] mb-[4px] bg-white  transition-all' "></span>   
-    <span [ngClass]="boolBurgerClose?'hidden' : 'w-[24px] h-[2px] mb-[4px] bg-yellow-400'"></span> 
-    <span [ngClass]="boolBurgerClose? 'absolute top-[0px] w-[24px] h-[2px] mb-[4px] bg-yellow-400 origin-top-right -rotate-45 transition-all': 'w-[24px] h-[2px] mb-[4px] bg-white  transition-all' "></span> 
+    <span [ngClass]="!boolBurgerClose? 'absolute top-[17px] w-[24px] h-[2px] mb-[4px] bg-white origin-top-right rotate-45':'w-[24px] h-[2px] mb-[4px] bg-white  transition-all' "></span>   
+    <span [ngClass]="!boolBurgerClose?'hidden' : 'w-[24px] h-[2px] mb-[4px] bg-yellow-400'"></span> 
+    <span [ngClass]="!boolBurgerClose? 'absolute top-[0px] w-[24px] h-[2px] mb-[4px] bg-yellow-400 origin-top-right -rotate-45 transition-all': 'w-[24px] h-[2px] mb-[4px] bg-white  transition-all' "></span> 
 
 </div>
     </div>
@@ -18,8 +18,8 @@
     <!-- NAVIGATION - LARGE SCREENS -->
   <div class="hidden lg:flex">
     <ul class="hidden lg:flex">
-      <li class="text-lg pr-8 "><a routerLink="stories" class="transition duration-300 focus:outline-none focus:text-yellow-500 focus:underline hover:underline hover:text-yellow-500" style="text-underline-offset: 8px;">Bibliothèque</a></li>
-      <li class="text-lg pr-8" ><button *ngIf="boolSignInbtn"  (click)="signOutHeader()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <li class="text-lg pr-8 "><a routerLink="stories" class="transition duration-300 focus:outline-none focus:text-yellow-500 focus:underline hover:underline hover:text-yellow-500" style="text-underline-offset: 8px;">Rejoindre une histoire</a></li>
+      <li class="text-lg pr-8" ><button *ngIf="boolSignInbtn"  (click)="signOutHeader()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[200px]">
         Se déconnecter
       </button></li>
       <li class="text-lg pr-8"><button  *ngIf="!boolSignInbtn" (click)="signInHeader()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -29,14 +29,15 @@
     </div>
   
     <div class="hidden lg:flex lg:flex-row">
-      <a href="#"><fa-icon class="text-[#EAFFD0] text-[32px] " [icon]="faContactBook"></fa-icon></a>
+      <a href="https://forms.gle/KfV3cA99UsML94Rf6" target="_blank" rel="noopener"><fa-icon class="text-[#EAFFD0] text-[32px] " [icon]="faContactBook"></fa-icon></a>
     </div>
     </div>
       
     <!-- MOBILE MENU -->
   <div id="mobileMenu" [ngClass]="!boolBurgerClose? ' flex w-full mx-auto py-8 text-center' : 'hidden'">
           <div class="flex flex-col justify-center items-center w-full">
-          <a routerLink="stories" class="block text-gray-200 cursor-pointer py-3 transition duration-300 focus:outline-none focus:text-yellow-500 focus:underline hover:underline hover:text-yellow-500" style="text-underline-offset: 8px;">Bibliothèque</a>
+            <a href="https://forms.gle/KfV3cA99UsML94Rf6" target="_blank" rel="noopener"><fa-icon class="text-[#EAFFD0] text-[32px] " [icon]="faContactBook"></fa-icon></a>
+          <a routerLink="stories" class="block text-gray-200 cursor-pointer py-3 transition duration-300 focus:outline-none focus:text-yellow-500 focus:underline hover:underline hover:text-yellow-500" style="text-underline-offset: 8px;">Rejoindre une histoire</a>
           <button *ngIf="boolSignInbtn"  (click)="signOutHeader()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Se déconnecter
           </button>

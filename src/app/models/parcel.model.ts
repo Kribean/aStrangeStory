@@ -7,6 +7,7 @@ export class Parcel {
     content!: string;
     like!:boolean;
     numberOfLike!:number;*/
+    _id!:string;
     email !: string;
     pseudo!: string;
     user_img_url!: string;

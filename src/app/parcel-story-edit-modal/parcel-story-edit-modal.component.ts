@@ -1,4 +1,4 @@
-import { Component,Input, OnInit,OnChanges, SimpleChanges} from '@angular/core';
+import { Component,Input, OnInit,OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import { Parcel } from '../models/parcel.model';
 import {FormBuilder, FormGroup,Validators } from '@angular/forms';
 import {Observable,map} from 'rxjs'
@@ -17,15 +17,16 @@ export class ParcelStoryEditModalComponent implements OnChanges , OnInit {
 
   @Input() showModal!: boolean;
   @Input() toggleModal!: ()=>void;
-  @Input() parcelStory!:Parcel
-  @Input() stepInModal!:Number
+  @Input() parcelStory!:Parcel;
+  @Input() stepInModal!:Number;
   @Input() userInformation!:User;
-
+  @Output() updateListWhenPutEvent :EventEmitter <Parcel[]>= new EventEmitter<Parcel[]>();
   contentStory!:string;
 
   parcelForm!:FormGroup;
   parcelStoryPreview$!:Observable<Parcel>;
   parcelStoryPreview!:Parcel;
+  MsgOfCharacter!:string;
  
 
   constructor(private readonly google: GoogleApiDisconnectService,private formBuilder:FormBuilder,private route:ActivatedRoute,private parcelService:ParcelService){}
@@ -39,26 +40,35 @@ export class ParcelStoryEditModalComponent implements OnChanges , OnInit {
 })
   
 this.parcelStoryPreview$=this.parcelForm.valueChanges.pipe(
-    map(parcelVar=>({
+    map(parcelVar=>(
+      {
       ...parcelVar,
       email : this.userInformation?.email,
       pseudo: this.userInformation?.name,
       user_img_url: this.userInformation?.picture
-    }))  
+    }))
+
   )
-  this.parcelStoryPreview$.subscribe((value)=>{this.parcelStoryPreview=value})
+  this.parcelStoryPreview$.subscribe((value)=>{
+    this.parcelStoryPreview=value;})
 
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.showModal=true
+    console.log('douille');
+   // this.showModal=true
   }
 
   onSubmitForm() {
-    this.stepInModal=2;
-    console.log(this.parcelStoryPreview,'presque',this.route.snapshot.params['idStory']);
-    this.parcelService.postParcel(this.route.snapshot.params['idStory'],this.parcelStoryPreview)
-    console.log('I m at step:',this.stepInModal);
-    console.log(this.parcelForm.value);
+    if(this.parcelStoryPreview.content_parcel.length>4)
+    {
+      this.MsgOfCharacter='';
+      this.stepInModal=2;
+    this.parcelService
+    .postParcel(this.route.snapshot.params['idStory'],this.parcelStoryPreview)
+    .subscribe(tabParcels=>{this.updateListWhenPutEvent.emit(tabParcels)})}
+    else{
+      this.MsgOfCharacter='Ton histoire est trop courte';
+    }
 }
 
 ngOnDestroy(){

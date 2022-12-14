@@ -3,17 +3,6 @@ p{
 }
 
 
-.book::after {
-    content: '📖';
-    --emoji: '📘';
-    animation-name: twoFrames;
-    animation-duration: 60s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes twoFrames {
-    50% {
-        content: var(--emoji);
-    }
+.content-perso-font{
+    font-family: 'Mystery Quest', cursive;
 }

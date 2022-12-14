@@ -15,11 +15,18 @@ export class ParcelService{
         return this.http.get<Parcel[]>(`http://localhost:3000/parcel/${arg}`);
     }
 
-    postParcel(arg:string,newParcel:Parcel){
-        console.log('je suis dans le post');
-        this.http.post(
+    postParcel(arg:string,newParcel:Parcel):Observable<Parcel[]>{
+
+        return this.http.post<Parcel[]>(
             `http://localhost:3000/parcel/${arg}`,
             newParcel
-        ).subscribe()
+        )
+    }
+
+    likeParcel(arg:string,pictureTab:{picture:string,idStory:string}):Observable<Parcel[]>{
+        return this.http.put<Parcel[]>(
+            `http://localhost:3000/parcel/${arg}`,
+            pictureTab
+        )
     }
 }

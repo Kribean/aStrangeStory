@@ -1,6 +1,6 @@
 <div class="flex flex-col p-4 bg-[#3FC1C9]" >
     <div *ngFor="let parcel of parcels "  class="flex flex-row m-4">
-        <app-parcel-story [parcelStory]="parcel"></app-parcel-story>
+        <app-parcel-story (updateListWhenPutEvent)="EverywhereUpdateListWhenPutEvent($event)" [parcels]="parcels" [parcelStory]="parcel"></app-parcel-story>
         
     </div>
     <div>
@@ -8,4 +8,4 @@
         <div *ngIf="!userInformation"> <p>Tu dois te connecter pour pouvoir éditer la suite de l'histoire</p></div>
     </div>
 </div>
-<app-parcel-story-edit-modal [showModal]="showModal" [userInformation]="userInformation" [stepInModal]="stepInModal"  [toggleModal]="toggleModal" [parcelStory]="parcelsLast" ></app-parcel-story-edit-modal>
+<app-parcel-story-edit-modal (updateListWhenPutEvent)="EverywhereUpdateListWhenPutEvent($event)" [showModal]="showModal" [userInformation]="userInformation" [stepInModal]="stepInModal"  [toggleModal]="toggleModal" [parcelStory]="parcelsLast" ></app-parcel-story-edit-modal>
